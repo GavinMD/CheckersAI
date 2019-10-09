@@ -4,6 +4,7 @@ public class Checker{
 		int x,y;
 		int board_pos;
 		char color;
+		int pieceType;
 		int[] valid_moves;
 
 		public Checker(){
@@ -14,7 +15,22 @@ public class Checker{
 			x = i;
 			y = j;
 			color = c;
+			pieceType = pieceInt(c);
 			board_pos = bp; 
+		}
+
+		public int pieceInt(int c){
+			switch(c)
+			{
+				case 'w': return 1;
+				case 'b': return 2;
+				case 'p': return 0;
+				case 'W': return 3;
+				case 'B': return 4;
+				default: return -1;
+				
+
+			}
 		}
 		
 		public void data(){

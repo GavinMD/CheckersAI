@@ -25,8 +25,8 @@ public class Board extends JPanel{
 			y_init = 0;
 			x = x_init;
 			y = y_init;
-			Width = 100;
-			Height = 100;
+			Width = 75;
+			Height = 75;
 		}
 
 		
@@ -72,26 +72,26 @@ public class Board extends JPanel{
 			switch(c)
 			{
 			case 'b':
-				d.setColor(Color.gray);
+				d.setColor(new Color(238,196,124));
 				d.fillRect(x, y, Width, Height);
 				return d;
 
 			case 'p':
-				d.setColor(Color.black);
+				d.setColor(new Color(156,111,31));
 				d.fillRect(x, y, Width, Height);
 				return d;
 
 			case 'r':
-				d.setColor(Color.black);
+				d.setColor(new Color(156,111,31));
 				d.fillRect(x, y, Width, Height);
-				d.setColor(Color.red);
+				d.setColor(Color.black);
 				d.fillOval(x, y, Width, Height);
 				return d;
 
 			case 'w':
-				d.setColor(Color.black);
+				d.setColor(new Color(156,111,31));
 				d.fillRect(x, y, Width, Height);
-				d.setColor(Color.white);
+				d.setColor(Color.red);
 				d.fillOval(x, y, Width, Height);
 				return d;
 

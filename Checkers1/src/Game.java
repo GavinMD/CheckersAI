@@ -43,7 +43,7 @@ public class Game extends JFrame {
 
 		add(b);
 		setTitle("Checkers");
-		setSize(808, 650);
+		setSize(650, 650);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
 		setResizable(true);
@@ -170,7 +170,8 @@ public class Game extends JFrame {
 					System.out.println(jumps.get(i).toString());
 				}
 				if(currentPlayer == AI_player){
-					botplayer.doSomething(jumps);
+					Move mj = botplayer.doSomething(jumps);
+					makeMove(mj.getFrom(), mj.getTo(), jumps);
 				}
 				else
 					makeMove(kb.nextInt(), kb.nextInt(), jumps);

@@ -49,6 +49,7 @@ public class Board extends JPanel{
 				for(int j = 0; j < board[i].length; j++){
 					if( board[i][j] != null){
 						pickDraw(board[i][j].getColor(),g2);
+						//prints the space number
 						g2.setColor(Color.orange);
 						g2.drawString(board[i][j].getBoard_pos_str(), x, y+10);
 					}
@@ -78,21 +79,34 @@ public class Board extends JPanel{
 				d.setColor(new Color(156,111,31));
 				d.fillRect(x, y, Width, Height);
 				return d;
-
+			//black piece
 			case 'r':
 				d.setColor(new Color(156,111,31));
 				d.fillRect(x, y, Width, Height);
 				d.setColor(Color.black);
 				d.fillOval(x, y, Width, Height);
 				return d;
-
+			//red piece
 			case 'w':
 				d.setColor(new Color(156,111,31));
 				d.fillRect(x, y, Width, Height);
 				d.setColor(Color.red);
 				d.fillOval(x, y, Width, Height);
 				return d;
-
+			//black king
+			case 'R':
+				d.setColor(new Color(156,111,31));
+				d.fillRect(x, y, Width, Height);
+				d.setColor(new Color(64,59,59));
+				d.fillOval(x, y, Width, Height);
+				return d;
+			//red king
+			case 'W':
+			d.setColor(new Color(156,111,31));
+			d.fillRect(x, y, Width, Height);
+			d.setColor(new Color(117,11,11));
+			d.fillOval(x, y, Width, Height);
+				return d;
 			default:
 
 			}

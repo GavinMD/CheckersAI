@@ -9,6 +9,8 @@ public class Game extends JFrame {
 	private static Scanner kb = new Scanner(System.in);
 
 	Checker[][] board;
+	AI botplayer;
+	int AI_player = -1;
 	int currentPlayer;
 	boolean finish = false;
 	Board b;
@@ -47,6 +49,15 @@ public class Game extends JFrame {
 		setResizable(true);
 		setVisible(true);
 
+		//assign AI to a checker color
+		while(AI_player != 1 && AI_player != 2){
+			System.out.println("Is the AI black(1) or red(2)?");
+			System.out.print("Enter AI player: ");
+			AI_player = kb.nextInt();
+		}
+
+		botplayer = new AI(AI_player);
+		
 		play();
 	}
 
@@ -158,7 +169,11 @@ public class Game extends JFrame {
 				for (int i = 0; i < jumps.size(); i++) {
 					System.out.println(jumps.get(i).toString());
 				}
-				makeMove(kb.nextInt(), kb.nextInt(), jumps);
+				if(currentPlayer == AI_player){
+					botplayer.doSomething(jumps);
+				}
+				else
+					makeMove(kb.nextInt(), kb.nextInt(), jumps);
 
 			}
 		}
@@ -378,15 +393,23 @@ public class Game extends JFrame {
 		LinkedList<Move> moves = legalMoves(currentPlayer);
 		// lose check
 				if (moves.isEmpty()) {
-					System.out.println(playerName() + "loses");
+					System.out.println(playerName() + " loses");
 					System.exit(0);
 				}
+		//display who's turn it is the list the potential moves
 		System.out.println(playerName() + " make a move");
 		System.out.println("Here are Possible moves: ");
 		for (int i = 0; i < moves.size(); i++) {
 			System.out.println(moves.get(i).toString());
 		}
-		makeMove(kb.nextInt(), kb.nextInt(), moves);
+		//AI player recieves moves as a list
+		if(currentPlayer == AI_player){
+			System.out.println("AI turn");
+			Move bm = botplayer.doSomething(moves);
+			makeMove(bm.getFrom(),bm.getTo(), moves);
+		}
+		else
+			makeMove(kb.nextInt(), kb.nextInt(), moves);
 	}
 
 }

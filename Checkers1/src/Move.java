@@ -27,5 +27,13 @@ public class Move {
         return "From: " + from + " To position: " + to;
     }
 
+    public int getFrom(){
+        return from;
+    }
+
+    public int getTo(){
+        return to;
+    }
+
 //		
 }
